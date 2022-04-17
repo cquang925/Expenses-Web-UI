@@ -1,0 +1,44 @@
+<h1>{{ title }}</h1>
+<p>Enter the expense information</p>
+
+<div class="form-container">
+    <form #form="ngForm">
+        <div class="form-group">
+            <label for="store">Store Name:  </label>
+            <input type="text" id="store" name="store" [(ngModel)]="expenseEntry.store" #store="ngModel">
+        </div><br />
+
+        <div class="form-group">
+            <label for="address">Address:  </label>
+            <input type="text" id="address" name="address" [(ngModel)]="expenseEntry.address" #address="ngModel">
+            <br />
+            <label for="city">City:  </label>
+            <input type="text" id="city" name="city" [(ngModel)]="expenseEntry.city" #city="ngModel">
+            <br />
+            <label for="state">State:  </label>
+            <input type="text" id="state" name="state" [(ngModel)]="expenseEntry.state" #state="ngModel">
+        </div><br />
+
+        <div class="form-group">
+            <label for="date">Date:  </label>
+            <input type="date" id="date" name="date" [(ngModel)]="expenseEntry.date" #date="ngModel">
+        </div><br />
+
+        <div class="form-group">
+            <label for="amount">Amount Spent:  </label>
+            <input type="number" id="amount" name="amount" [(ngModel)]="expenseEntry.amount" #amount="ngModel">
+        </div><br />
+
+        <div class="form-group">
+            <label for="category">Category:  </label>
+            <select id="category" name="category" [(ngModel)]="expenseEntry.category" #category="ngModel">
+                <option *ngFor="let category of categories">
+                    {{ category }}
+                </option>
+            </select>
+        </div><br />
+
+        <button (click)="onSubmit(form)">Submit</button>
+        <button>Clear</button>
+    </form>
+</div>
