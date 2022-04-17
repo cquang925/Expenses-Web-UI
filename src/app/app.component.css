@@ -1,0 +1,8 @@
+body {
+    display: block;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+}

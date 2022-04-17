@@ -32,5 +32,4 @@ export class ExpenseFormComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log(this.expenseEntry)
   }
-
 }
