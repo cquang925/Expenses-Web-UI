@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http'; 
 
 import { ExpenseForm } from '../views/expense-form/expense-form'; 
 
@@ -9,10 +10,14 @@ import { ExpenseForm } from '../views/expense-form/expense-form';
 export class ExpenseService {
   apiUrl!: string;
 
-  constructor() { }
+  serFrom! : ExpenseForm;
 
-  addExpense(form: ExpenseForm) {
-    console.log('this is the service method: ' + form)
+  constructor( private http: HttpClient ) { }
+
+  addExpense(form: ExpenseForm): Observable<any> {
+    this.apiUrl = "https://putsreq.com/3Nl8I0wihfCtHd2OmRRQ"
+    this.serFrom = JSON.parse(JSON.stringify(form))
+    return (this.http.post(this.apiUrl, this.serFrom))
   }  
 
 }

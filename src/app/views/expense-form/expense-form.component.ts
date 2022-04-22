@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ExpenseForm } from './expense-form';
 import { ExpenseService } from 'src/app/shared/expense.service';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-expense-form',
@@ -13,7 +14,7 @@ export class ExpenseFormComponent implements OnInit {
   title ="Expense Form"
   categories = ["Food", "Clothes", "Electronics", "House wares", "Other"]
 
-  originalForm : ExpenseForm = {
+  expenseEntry : ExpenseForm = {
     store: null,
     address: null,
     city: null,
@@ -23,15 +24,18 @@ export class ExpenseFormComponent implements OnInit {
     category: null
   }
 
-  expenseEntry: ExpenseForm = {...this.originalForm}
-
   constructor( private expenseService: ExpenseService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form: NgForm) {
-    this.expenseService.addExpense(this.expenseEntry)
-    console.log("this is inside of submit " + this.expenseEntry)
+
+    if(form.valid) {
+      this.expenseService.addExpense(this.expenseEntry)
+        .subscribe(result => console.log(result));
+      form.resetForm();
+    }
   }
+
 }

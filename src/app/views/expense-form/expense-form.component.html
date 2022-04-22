@@ -2,7 +2,7 @@
 <p>Enter the expense information</p>
 
 <div class="form-container">
-    <form #form="ngForm">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
         <div class="form-group">
             <label for="store">Store Name:  </label>
             <input type="text" id="store" name="store" [(ngModel)]="expenseEntry.store" #store="ngModel">
@@ -38,7 +38,7 @@
             </select>
         </div><br />
 
-        <button (click)="onSubmit(form)">Submit</button>
+        <button>Submit</button>
         <button>Clear</button>
     </form>
 </div>
