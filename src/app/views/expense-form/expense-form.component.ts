@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ExpenseForm } from './expense-form';
+import { ExpenseService } from 'src/app/shared/expense.service';
 
 @Component({
   selector: 'app-expense-form',
@@ -24,12 +25,13 @@ export class ExpenseFormComponent implements OnInit {
 
   expenseEntry: ExpenseForm = {...this.originalForm}
 
-  constructor() { }
+  constructor( private expenseService: ExpenseService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form: NgForm) {
-    console.log(this.expenseEntry)
+    this.expenseService.addExpense(this.expenseEntry)
+    console.log("this is inside of submit " + this.expenseEntry)
   }
 }
