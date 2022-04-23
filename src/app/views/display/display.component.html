@@ -1,1 +1,27 @@
-<p>display works!</p>
+<h1>Expense Report</h1>
+<p>Page displays last 10 expenses</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Store</th>
+            <th>Address</th> 
+            <th>City</th>
+            <th>State</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let exp of displayExp">
+            <td>{{ exp.store }}</td>
+            <td>{{ exp.address }}</td>
+            <td>{{ exp.city }}</td>
+            <td>{{ exp.state }}</td>
+            <td>{{ exp.date }}</td>
+            <td>$ {{ exp.amount }}</td>
+            <td>{{ exp.category }}</td>
+        </tr>
+    </tbody>
+</table>
