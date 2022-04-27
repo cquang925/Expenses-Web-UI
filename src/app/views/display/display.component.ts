@@ -14,9 +14,8 @@ export class DisplayComponent implements OnInit {
   constructor( private expServ: ExpenseService) { }
 
   ngOnInit(): void {
-    this.expServ.getExpenses().subscribe(
-      (expenses) => this.displayExp = expenses
-    )
+    this.expServ.getExpenses().
+    subscribe((expenses: ExpenseForm[]) => this.displayExp = expenses
+    );
   }
-
 }

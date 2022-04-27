@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ExpenseForm } from './expense-form';
 import { ExpenseService } from 'src/app/shared/expense.service';
-import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-expense-form',
@@ -34,8 +33,11 @@ export class ExpenseFormComponent implements OnInit {
     if(form.valid) {
       this.expenseService.addExpense(this.expenseEntry)
         .subscribe(result => console.log(result));
-      form.resetForm();
+      this.onClear(form);
     }
   }
 
+  onClear(form: NgForm) {
+    form.resetForm();
+  }
 }

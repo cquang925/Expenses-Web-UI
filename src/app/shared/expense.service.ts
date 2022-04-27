@@ -14,13 +14,15 @@ export class ExpenseService {
   constructor( private http: HttpClient ) { }
 
   addExpense(form: ExpenseForm): Observable<any> {
-    this.apiUrl = "https://putsreq.com/3Nl8I0wihfCtHd2OmRRQ"
+    // this.apiUrl = "https://putsreq.com/3Nl8I0wihfCtHd2OmRRQ"
+    this.apiUrl = "http://localhost:8080/api/addexpense"
     this.serFrom = JSON.parse(JSON.stringify(form))
     return (this.http.post(this.apiUrl, this.serFrom))
   }
 
   getExpenses(): Observable<any> {
-    this.apiUrl = "https://putsreq.com/4xRHbXOgTC729LhHBqQs"
+    // this.apiUrl = "https://putsreq.com/4xRHbXOgTC729LhHBqQs"
+    this.apiUrl = "http://localhost:8080/api/getexpenses"
     return this.http.get(this.apiUrl)
   }
 
